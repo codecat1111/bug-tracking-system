@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center mb-0">Report New Security Issue</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('new_issue') }}">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Issue Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="issue_type" class="form-label">Issue Type</label>
+                        <select class="form-select" id="issue_type" name="issue_type" required>
+                            <option value="">Select Issue type</option>
+                            <option value="Phishing">Phishing Attempt</option>
+                            <option value="Malware">Malware Infection</option>
+                            <option value="Unauthorized Access">Unauthorized Access</option>
+                            <option value="Data Breach">Data Breach</option>
+                            <option value="DDoS">DDoS Attack</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="severity" class="form-label">Severity Level</label>
+                        <select class="form-select" id="severity" name="severity" required>
+                            <option value="">Select severity level</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                        <div class="form-text">Please provide detailed information about the issue.</div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                        <a href="{{ url_for('issues') }}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

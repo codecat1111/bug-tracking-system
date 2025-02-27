@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Security Issue Management System</h1>
+        <p class="lead mb-4">Track and manage security issues efficiently</p>
+        
+        {% if current_user.is_authenticated %}
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('new_issue') }}" class="btn btn-primary btn-lg px-4 gap-3">Report New Issue</a>
+            <a href="{{ url_for('issues') }}" class="btn btn-outline-secondary btn-lg px-4">View Issues</a>
+        </div>
+        {% else %}
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 gap-3">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg px-4">Register</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Quick Reporting</h5>
+                <p class="card-text">Report security incidents quickly and efficiently with our streamlined form.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Issue Tracking</h5>
+                <p class="card-text">Track the status and progress of reported issues in real-time.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Secure Access</h5>
+                <p class="card-text">Role-based access control ensures data security and confidentiality.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

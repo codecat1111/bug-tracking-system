@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Connection Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Database Connection Test</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="testForm" class="mb-4">
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Test Message</label>
+                                <input type="text" class="form-control" id="message" name="message" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Test Connection</button>
+                        </form>
+                        <div id="result" class="alert d-none"></div>
+                        <div class="mt-4">
+                            <h4>Recent Entries</h4>
+                            <ul id="entries" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const resultDiv = document.getElementById('result');
+
+            try {
+                const response = await fetch('/api/test', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                resultDiv.textContent = data.message;
+                resultDiv.className = `alert alert-${data.status === 'success' ? 'success' : 'danger'}`;
+                resultDiv.classList.remove('d-none');
+                
+                if (data.status === 'success') {
+                    loadEntries();
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Error connecting to server';
+                resultDiv.className = 'alert alert-danger';
+                resultDiv.classList.remove('d-none');
+            }
+        });
+
+        async function loadEntries() {
+            try {
+                const response = await fetch('/api/entries');
+                const entries = await response.json();
+                const entriesList = document.getElementById('entries');
+                
+                entriesList.innerHTML = entries.map(entry => `
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>${entry.message}</span>
+                            <small class="text-muted">${entry.created_at}</small>
+                        </div>
+                    </li>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading entries:', error);
+            }
+        }
+
+        // Load entries when page loads
+        loadEntries();
+    </script>
+</body>
+</html>
