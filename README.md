@@ -81,12 +81,12 @@ A web application for tracking and managing security issues efficiently. Built w
 
 ## File Structure
 
-- [app.py](http://_vscodecontentref_/0): Main application file.
-- [config.py](http://_vscodecontentref_/1): Configuration file for Flask and SQLAlchemy.
-- [models.py](http://_vscodecontentref_/2): Database models for User and Issue.
-- [init_db.py](http://_vscodecontentref_/3): Script to initialize the database.
-- [requirements.txt](http://_vscodecontentref_/4): List of dependencies.
-- [templates](http://_vscodecontentref_/5): Directory containing HTML templates.
+- app.py: Main application file.
+- config.py: Configuration file for Flask and SQLAlchemy.
+- models.py: Database models for User and Issue.
+- init_db.py: Script to initialize the database.
+- requirements.txt: List of dependencies.
+- templates: Directory containing HTML templates.
 - `static/`: Directory for static files (CSS, JS).
 
 ## License
