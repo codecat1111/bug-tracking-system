@@ -67,12 +67,23 @@ A web application for tracking and managing security issues efficiently. Built w
 ## Usage
 
 - **Home Page**: View the home page with options to login or register.
-- **Login**: Access the login page to authenticate.
+  
+  ![Screenshot](Screenshots/Homepage.png)
+- **Login**: Access the login page to authenticate. Implemented Hashing as additional security measure using the `werkzeug.security` module.
+  
+  ![Screenshot](Screenshots/PasswordSecurity.png)
 - **Register**: Access the registration page to create a new account.
 - **Report Issue**: Authenticated users can report new security issues.
 - **View Issues**: View a list of all reported issues.
+  
+   ![Screenshot](Screenshots/ViewIssues.png)
 - **View Issue**: View detailed information about a specific issue.
+
+   ![Screenshot](Screenshots/IssueDescription.png)
+  
 - **Profile**: View user profile and activity history.
+
+   ![Screenshot](Screenshots/ProfileInformation.png)
 
 ## API Endpoints
 
