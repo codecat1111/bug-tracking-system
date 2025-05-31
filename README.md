@@ -103,3 +103,13 @@ A web application for tracking and managing security issues efficiently. Built w
 ## License
 
 This project is licensed under the MIT License.
+
+
+## ⭐ Found It Helpful? [Star It!](https://github.com/codecat1111/bug-tracking-system/stargazers)
+
+If you found this project helpful, let the community know by giving it a [star](https://github.com/codecat1111/bug-tracking-system/stargazers): [👉⭐](https://github.com/codecat1111/bug-tracking-system/stargazers)
+
+---
+
+For inquiries, feature requests, or to report issues, please utilize the GitHub issue tracking system or contribute via pull requests.
+
